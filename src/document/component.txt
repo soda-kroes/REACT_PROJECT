@@ -1,0 +1,62 @@
+import React, { useState } from 'react'
+import ProductList from '../../component/list/ProductList'
+import coca from '../../assets/productImage/coca.jpg'
+
+function HomePage() {
+    //@TODO
+    const [product,setProduct] = useState([
+        {
+            id:101,
+            p_name: "Macbook 2016",
+            p_price: 1200,
+            p_description: "256 SSD, RAM 8GB",
+            p_image: coca
+            
+        },
+        {
+            id:102,
+            p_name: "Macbook 2017",
+            p_price: 1200,
+            p_description: "256 SSD, RAM 8GB",
+            p_image: coca
+        },
+        {
+            id:103,
+            p_name: "Macbook 2018",
+            p_price: 1200,
+            p_description: "256 SSD, RAM 8GB",
+            p_image: coca
+        },
+        {
+            id:104,
+            p_name: "Macbook 2012",
+            p_price: 1200,
+            p_description: "256 SSD, RAM 8GB",
+            p_image: coca
+        }
+        
+    ]);
+  return (
+    <div>
+        <div>HomePage</div>
+         {
+            product.map((item,index) =>{
+                return(
+                    
+                    <ProductList
+                        key={index}
+                        name={item.p_name}
+                        price={item.p_price}
+                        description={item.p_description}
+                        image={item.p_image}
+
+                   
+                     />
+                )
+            })
+         }
+    </div>
+  )
+}
+
+export default HomePage

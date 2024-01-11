@@ -1,0 +1,28 @@
+import React from 'react'
+import {AndroidOutlined, AppleOutlined, DeleteFilled, EditFilled, SaveFilled} from '@ant-design/icons'
+import {Button, Space} from 'antd'
+import SlideHome from '../../component/slide/SlideHome'
+
+
+
+function HomePage() {
+  return (
+    <div style={{padding:10}}>
+       <h1 style={{textAlign:'center'}}>Home Page</h1>
+      <Space direction='horizontal'>
+       <Button loading= 'true'>Apple <AppleOutlined /></Button>
+       <Button success>Android <AndroidOutlined /></Button>
+       <Button success>Save <SaveFilled /></Button>
+       <Button success>Update <EditFilled /></Button>
+       <Button danger>Delete <DeleteFilled /></Button>
+      </Space>
+      <hr />
+      <SlideHome />
+      
+       
+    </div>
+    
+  )
+}
+
+export default HomePage

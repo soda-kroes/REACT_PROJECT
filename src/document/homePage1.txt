@@ -1,0 +1,50 @@
+import {ProductList} from '../../component/data/ProductData'
+import {ArrCourse} from '../../component/data/ProductData'
+import { IoIosHome } from "react-icons/io";
+
+
+
+const HomePage = () =>{
+    return(
+        <div style={{padding:"20px"}}>
+            <h1 style={{textAlign:'center'}}>Home Page </h1>
+            <h1 style={{backgroundColor:'grey'}}>Display Product Array Object List <IoIosHome /> </h1>
+            <div style={{display:"flex"}}>
+                {
+                    ProductList.map((item,index)=>{
+                       return(
+                        <div key={index} style={{backgroundColor:"yellow", padding:10, margin:10, borderRadius:10}}>
+                            <img src={item.image} style={{width:200 ,height:200}}></img>
+                            <h3>Code : {item.code}</h3>
+                            <h3>Name : {item.name}</h3>
+                            <h3>Qty  : {item.qty}</h3>
+                            <h3>Price: {item.price}</h3>
+                            <div  style={{display:"flex"}}>{item.color.map((item1,index1)=>{
+                                return(
+                                    <div key={index1}>
+                                        <div style={{width:"60px", height:"60px", backgroundColor:item1, margin:"5px"}}>{item1}</div>
+                                    </div>
+                                )
+                            })}</div>
+                        </div>
+                       )
+                    })
+                }
+            </div>
+            <h1 style={{backgroundColor:'grey'}}>Display  Array  List</h1>
+            <div>
+                {
+                    ArrCourse.map((item,index)=>{
+                       return(
+                        <div key={index}>
+                            <h2>{item}</h2>
+                        </div>
+                       )
+                    })
+                }
+            </div>
+        </div>
+    )
+}
+
+export default HomePage;

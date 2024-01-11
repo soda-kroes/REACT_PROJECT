@@ -1,0 +1,153 @@
+import {useState} from 'react'
+import './HomePage.css'
+
+const HomePage = ()=>{
+    //@TODO 
+    
+    //how to use useState
+    //syntax: const [variable,setter] = useState(init);
+    const [name,setName] = useState("soda");
+    const [gender,setGender] = useState("male");
+    const [age,setAge] = useState(20);
+    const handleClickChange = () =>{
+       setName("darya");
+       setGender("female");
+       setAge(25);
+        
+    }
+    //login 
+    const [username,setUsername] = useState("");
+    const [password,setPassword] = useState("");
+    const handleOnChangeUsername = (event) =>{
+       setUsername(event.target.value);
+    }
+    const handleOnChangePass = (event) =>{
+        setPassword(event.target.value);
+    }
+    const handleOnlcikLogin = () =>{
+        alert("Your Username Is: "+username+" And Your Password Is: "+password);
+    }
+    //operator
+    const [result,setResult] = useState(0);
+    const [value1,setValue1] = useState();
+    const [value2,setValue2] = useState();
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    
+    const handleOnChangeValue1 = (event) => {
+        setValue1(event.target.value);
+    }
+    const handleOnChangeValue2 = (event) => {
+        setValue2(event.target.value);
+    }
+    const handleClickOperation= (par) =>{
+        var v1 = Number(value1);
+        var v2 = Number(value2);
+        if(par=="sum"){
+            var data = v1+v2;
+            setResult(capitalizeFirstLetter(par)+" is: "+data)
+        }
+        else if(par=="sub"){
+            var data = v1-v2;
+            setResult(capitalizeFirstLetter(par)+" is: "+data)
+        }
+        else if(par=="mul"){
+            var data = v1*v2;
+            setResult(capitalizeFirstLetter(par)+" is: "+data)
+        }
+        else if(par=="div"){
+            var data = v1/v2;
+            setResult(capitalizeFirstLetter(par)+" is: "+data)
+        }
+        
+    }
+    //add array
+    const [box,setBox] = useState([]);
+
+    //box
+    const handleOnClickAddBox = () =>{
+        const tmp= box;
+        tmp.push(1);
+        setBox([...tmp]);
+    }
+    return(
+        <div style={{padding:"20px"}}>
+            <h1 style={{textAlign:'center'}}>React State & component</h1>
+            <hr></hr>
+            <h1>Name: {name}</h1>
+            <h1>Gender: {gender}</h1>
+            <h1>Age: {age}</h1>
+            <button onClick={handleClickChange}>Change Info</button>
+            <hr />
+            <h1 style={{textAlign:'center'}}>Login</h1>
+            <label>Username: </label>
+            <input onChange={handleOnChangeUsername} type='text' placeholder='Enter Username'></input>
+            <br />
+            <br />
+            <label>Password: </label>
+            <input onChange={handleOnChangePass} type='text' placeholder='Enter Password'></input>
+            <br />
+            <br />
+            <button onClick={handleOnlcikLogin}>Login</button>
+            <hr />
+            <h1>Operator</h1>
+            <input onChange={handleOnChangeValue1} className='txtValue1' placeholder='value1' type='number' />
+            <input onChange={handleOnChangeValue2} className='txtValue2' placeholder='value2' type='number'/>
+            <button onClick={()=>handleClickOperation("sum")} className='btn'>+</button>
+            <button onClick={()=>handleClickOperation("sub")}  className='btn'>-</button>
+            <button onClick={()=>handleClickOperation("mul")}  className='btn'>x</button>
+            <button onClick={()=>handleClickOperation("div")}  className='btn'>/</button>
+            <br />
+            <h3>Result:<span style={{marginLeft:10}}>{result}</span> </h3>
+            <hr />
+            <h1>Add Array</h1>
+            <button onClick={handleOnClickAddBox}>Add Box</button>
+        
+            <div>
+                {
+                    box.map((item,index)=>{
+                        return (
+                            <div  style={{width:40, height:40, backgroundColor:'red', marginTop:10}} key={index}>
+                             {index+1}
+                            </div>
+                        )
+                    })
+                }
+
+            </div>
+            
+        </div>
+    )
+}
+
+export default HomePage;
+
+
+
+
+
+
+
+
+/////////////////////////// CSS /////////////////////
+.txtValue1{
+    padding: 8px;
+    margin: 5px;
+
+}
+.txtValue2{
+    padding: 8px;
+    margin-right: 10px;
+
+}
+.btn{
+    background-color: rgb(30, 98, 158);
+    width: 40px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    color: whitesmoke;
+    margin-right: 10px;
+
+}
